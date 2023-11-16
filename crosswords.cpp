@@ -231,19 +231,17 @@ Crossword &Crossword::operator=(Crossword &&other) noexcept {
 void Crossword::print(std::ostream &os) const {
     auto x = _area.get_left_top().first;
     auto y = _area.get_left_top().second;
-    auto rows = _area.size().first + 2;
-    auto cols = _area.size().second + 2;
+    auto cols = _area.size().first + 2;
+    auto rows = _area.size().second + 2;
     std::vector<std::vector<char>> printable_area(rows, std::vector<char>(cols, CROSSWORD_BACKGROUND));
     for (const auto& word: _words) {
         auto start_x = word.get_start_position().first - x + 1;
         auto start_y = word.get_start_position().second - y + 1;
-        if (word.get_orientation()) {
-            // vertical
+        if (word.get_orientation() == H) {
             for (int i = 0; i < word.length(); i++) {
                 printable_area[start_x][start_y + i] = word.at(i);
             }
         } else {
-            //horizontal
             for (int i = 0; i < word.length(); i++) {
                 printable_area[start_x + i][start_y] = word.at(i);
             }
