@@ -145,7 +145,7 @@ bool Crossword::word_cross(Word &w1, Word &w2) {
     auto r1 = RectArea(w1.get_start_position(), w1.get_end_position());
     auto r2 = RectArea(w2.get_start_position(), w2.get_end_position());
 
-    if (w1.get_orientation() != w1.get_orientation()) {
+    if (w1.get_orientation() != w2.get_orientation()) {
         auto common = r1 * r2;
         if (common.size() == dim_t{1,1}) {
             auto point = common.get_left_top();
