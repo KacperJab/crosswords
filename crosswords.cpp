@@ -116,7 +116,7 @@ void RectArea::embrace(pos_t pos) {
 // CROSSWORD
 
 dim_t Crossword::size() {
-    return dim_t{h_size, v_size};
+    return _area.size();
 }
 
 dim_t Crossword::word_count() {
